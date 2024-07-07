@@ -9,6 +9,61 @@
 <body>
     <div class="main-container">
         <h1>Setting up your local environment</h1>
+        <h3>Updating the database</h3>
+        <p>Update the database in phpmyadmin </p>
+        <or>
+            <li>
+                <h5>Create database tables</h5>
+                <p>Open open phpmyadmin and run the following command to create database tables </p>
+                <div class="code">
+                    CREATE DATABASE IF NOT EXISTS taxicode_click;
+                    CREATE DATABASE IF NOT EXISTS taxicode_griff;
+                    CREATE DATABASE IF NOT EXISTS taxicode_sessions;
+                    CREATE DATABASE IF NOT EXISTS taxicode_users;
+                    CREATE DATABASE IF NOT EXISTS taxicode_stats;
+                    CREATE DATABASE IF NOT EXISTS taxicode_loda;
+                </div>
+            </li>
+            <li>
+                <h5>Create the web3r app user and grand permissions</h5>
+                <p>Change username and password to match the environment config</p>
+                <div class="code">
+                    CREATE USER IF NOT EXISTS 'web3r'@'%' IDENTIFIED BY 'fdsWsdKqWYM8nnW4';
+                    GRANT ALL PRIVILEGES ON taxicode_click.* TO 'web3r'@'localhost';
+                    GRANT ALL PRIVILEGES ON taxicode_griff.* TO 'web3r'@'localhost';
+                    GRANT ALL PRIVILEGES ON taxicode_sessions.* TO 'web3r'@'localhost';
+                    GRANT ALL PRIVILEGES ON taxicode_users.* TO 'web3r'@'localhost';
+                    GRANT ALL PRIVILEGES ON taxicode_stats.* TO 'web3r'@'localhost';
+                    GRANT ALL PRIVILEGES ON taxicode_loda.* TO 'web3r'@'localhost';
+            </li>
+            <li>
+                <h5>Update domain names in taxicode_griff table</h5>
+                <p>Run the code in query console to update the domain_hostname to local host domain names </p>
+                <div class="code">
+                    UPDATE gfw_domains SET domain_hostname = 'api.local' WHERE domain_hostname IN ('api.taxicode.com', 'api.stagingtaxis.co.uk') LIMIT 1;
+                    UPDATE gfw_domains SET domain_hostname = 'taxicode.local' WHERE domain_hostname IN ('taxicode.com', 'taxicode.stagingtaxis.co.uk') LIMIT 1;
+                    UPDATE gfw_domains SET domain_hostname = 'secure.local' WHERE domain_hostname IN ('secure.taxicode.com', 'secure.stagingtaxis.co.uk') LIMIT 1;
+                    UPDATE gfw_domains SET domain_hostname = 'compare.local' WHERE domain_hostname IN ('taxipricecompare.co.uk', 'compare.stagingtaxis.co.uk') LIMIT 1;
+                    UPDATE gfw_domains SET domain_hostname = 'taxis.local' WHERE domain_hostname IN ('taxisfleet.co.uk', 'taxis.stagingtaxis.co.uk') LIMIT 1;
+                    UPDATE gfw_domains SET domain_hostname = 'trip.local' WHERE domain_hostname IN ('ridewithtrip.com', 'trip.stagingtaxis.co.uk') LIMIT 1;
+                    UPDATE gfw_domains SET domain_hostname = 'taxifares.local' WHERE domain_hostname IN ('taxifares.co.uk', 'taxifares.stagingtaxis.co.uk') LIMIT 1;
+                    UPDATE gfw_domains SET domain_hostname = 'bookataxiride.local' WHERE domain_hostname IN ('bookataxiride.com', 'bookataxiride.stagingtaxis.co.uk') LIMIT 1;
+                    UPDATE gfw_domains SET domain_hostname = 'dashboard.local' WHERE domain_hostname IN ('dashboard.web3r.co.uk', 'dashboard.stagingtaxis.co.uk') LIMIT 1;
+                    UPDATE gfw_domains SET domain_hostname = 'drivers.local' WHERE domain_hostname IN ('drivers.taxicode.com', 'drivers.stagingtaxis.co.uk') LIMIT 1;
+                    UPDATE gfw_domains SET domain_hostname = 'users.local' WHERE domain_hostname IN ('users.taxicode.com', 'users.stagingtaxis.co.uk') LIMIT 1;
+                    UPDATE gfw_domains SET domain_hostname = 'heathrow.local' WHERE domain_hostname IN ('topairporttaxis.co.uk', 'heathrow.stagingtaxis.co.uk') LIMIT 1;
+                </div>
+            </li>
+            <li>
+                <h5>Update ngrok hostname</h5>
+                <p>Replace the domain_hostname in the code below with your own ngrok domain and run the code in query console to update the gfw_domain</p>
+                <div class="code">
+                    SELECT * FROM gfw_domains WHERE domain_hostname LIKE '%ngrok%'
+                    UPDATE gfw_domains SET domain_hostname = '3110-2a02-c7c-393b-af00-511c-8276-8aaa-9bc0.ngrok-free.app' WHERE domainId = 2243 limit 1
+                </div>
+            </li>
+        </or>
     </div>
+
 </body>
 </html>
