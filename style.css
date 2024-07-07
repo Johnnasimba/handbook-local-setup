@@ -1,6 +1,9 @@
 body {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
     font-family: Arial, sans-serif;
-    background-color: #505274;
+    background: #282d3f;
     color: #fff;
     margin: 0;
     padding: 0;
@@ -9,4 +12,35 @@ body {
 .main-container {
     min-height: 100vh;
     padding: 34px;
+    max-width: 1200px;
+}
+h1 {
+    font-size: 2.5rem;
+}
+h3 {
+    font-size: 1.75rem;
+}
+h5 {
+    font-size: 1.25rem;
+}
+a {
+    color: #2b79a2;
+    text-decoration: none;
+    &:hover {
+        text-decoration: underline;
+    }
+
+}
+.code {
+    display: block;
+    overflow-x: auto;
+    background: #1d1f21;
+    color: #c5c8c6;
+    padding: 1rem;
+    border-radius: 0.5rem;
+}
+.none-style-list {
+    li {
+        margin-bottom: 0.5rem;
+    }
 }

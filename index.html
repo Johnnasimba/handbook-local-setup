@@ -9,9 +9,43 @@
 <body>
     <div class="main-container">
         <h1>Setting up your local environment</h1>
-        <h3>Updating the database</h3>
+        <h3>Prerequisites</h3>
+        <p>Make sure you have the following installed on your local machine</p>
+        <ul class="none-style-list"> 
+            <li>
+                <a href="#" rel="nofollow">Git</a>
+            </li>
+            <li>
+                <a href="#" rel="nofollow">Docker</a>
+            </li>
+            <li>
+                <a href="#" rel="nofollow">GitHub Account</a>
+            </li>
+            <li>
+                <a href="#" rel="nofollow">DockerHub Account</a>
+            </li>
+            <li>
+                <a href="#" rel="nofollow">Ngrok</a>
+            </li>
+        </ul>
+        <h3>Update Host files</h3>
+        <p>Add this to your local computer to /etc/hosts</p>
+        <div class="code">
+            # Taxicode Database local hosts<br />
+            127.0.0.1       database.local phpmyadmin.local<br />
+            ::1             database.local phpmyadmin.local<br />
+            # Taxicode local hosts domains<br />
+            127.0.0.1       sessions.local api.local taxicode.local secure.local dashboard.local<br />
+            ::1             sessions.local api.local taxicode.local secure.local dashboard.local<br />
+            127.0.0.1       compare.local taxis.local trip.local taxifares.local bookataxiride.local <br />
+            ::1             compare.local taxis.local trip.local taxifares.local bookataxiride.local <br />
+            127.0.0.1       drivers.local users.local heathrow.local locksmiths.local secure.taxifares.local <br />
+            ::1             drivers.local users.local heathrow.local locksmiths.local secure.taxifares.local <br />
+            
+        </div>
+        <h3>Update the database</h3>
         <p>Update the database in phpmyadmin </p>
-        <or>
+        <ol>
             <li>
                 <h5>Create database tables</h5>
                 <p>Open open phpmyadmin and run the following command to create database tables </p>
