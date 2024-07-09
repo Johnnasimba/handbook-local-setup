@@ -56,6 +56,21 @@
             <img src="assets/ngrok.png" alt="ngrok" width="100%"  max-height="500px">
         </div>
 
+        <h3>Install ngrok linux</h3>
+        <p>
+            Go to the&nbsp;
+            <a href="https://ngrok.com/download" rel="nofollow noopener noreferrer" target="_blank">
+            ngrok download page
+            </a>&nbsp;
+           and download the Linux version suitable for your architecture
+        </p>
+        <p>Then unzip ngrok from the terminal</p>
+        <div class="code">
+            
+        </div>
+        <h3>Clone the repository </h3>
+        <h3>Copy docker and ngix files to root directory</h3>
+
         <h3>Update the database</h3>
         <p>Update the database in phpmyadmin </p>
         <ol>
@@ -84,6 +99,16 @@
                     GRANT ALL PRIVILEGES ON taxicode_loda.* TO 'web3r'@'localhost';
             </li>
             <li>
+                <h5>Import the database</h4>
+
+                <p>For each database table, import the&nbsp; 
+                    <a href="https://github.com/Web3r/taxicode-dev-setup-files" rel="nofollow" target="_blank">
+                        database file
+                    </a>
+                    &nbsp;into it's corresponding table
+                </p>
+            </li>
+            <li>
                 <h5>Update domain names in taxicode_griff table</h5>
                 <p>Run the code in query console to update the domain_hostname to local host domain names </p>
                 <div class="code">
@@ -109,7 +134,24 @@
                     UPDATE gfw_domains SET domain_hostname = '3110-2a02-c7c-393b-af00-511c-8276-8aaa-9bc0.ngrok-free.app' WHERE domainId = 2243 limit 1
                 </div>
             </li>
-        </or>
+            <li>
+                <h5>Update this command with your ngrok url and run it in query console taxicode_griff table</h5>
+                <div class="code">
+                    UPDATE gfw_domains SET domain_hostname = '3110-2a02-c7c-393b-af00-511c-8276-8aaa-9bc0.ngrok-free.app' WHERE domainId = 2243 limit 1        
+                </div>
+            </li>
+
+            <li>
+                <h5>Run the following commands in the  pphp-5.6-apache-latest image</h5>
+                <div class="code">
+                    taxicode-init
+                </div><br />
+                <div class="code">
+                    taxicode-deploy
+                </div>
+            </li>
+
+        </ol>
     </div>
 
 </body>
